@@ -1,10 +1,35 @@
-appName: myhelmapp
-
-configmap:
-  name: myhelmapp-configmap-v1
-  data:
-    CUSTOM_HEADER: 'This app was deployed with helm!'
+appName: 618623-nginx-app
 
 image:
-  name: eyesoncloud/webapp
-  tag: 33
+  name: joshmitac/helmapp
+  tag: nginx
+
+configmap:
+  name: nginx-config
+  data:
+    WELCOME_ROSA: 'Welcome to NGINX on ROSA!'
+    
+secret:
+  name: nginx-secret
+  data:
+    APP_KEY: "MySecretKey123"
+
+serviceAccount:
+  name: nginx-sa
+
+pvc:
+  name: nginx-pvc
+  storage: 5Gi
+
+service:
+  name: nginx-service
+  type: ClusterIP
+  port: 80
+
+route:
+  name: nginx-route
+  host: ""
+
+role:
+  name: nginx-role
+  roleBinding: nginx-rolebinding
