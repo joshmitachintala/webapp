@@ -1,3 +1,4 @@
+namespace: 618623-nginx-namespace
 appName: 618623-nginx-app
 
 image:
